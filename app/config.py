@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    DB_HOST: str = "localhost"
 
     """Налаштування Pydantic для завантаження даних з файлу .env."""
     model_config = SettingsConfigDict(env_file=".env")
