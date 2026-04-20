@@ -4,7 +4,7 @@
 Використовує pydantic-settings для керування налаштуваннями через змінні оточення
 або файл .env. Містить ключі безпеки та глобальні параметри сервера.
 """
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -23,14 +23,13 @@ class Settings(BaseSettings):
     debug: bool = True
 
     # Налаштування безпеки (JWT)
-    # У реальному проекті ці значення мають завантажуватися з .env файлу
-    SECRET_KEY: str = "super-secret-key-12345"
+    # У реальному проекті ці значення мають завантажуватися з .env файлу (у додатку паролі зберігаються у оточенні та більше не будуть завантажуватись на GitHub)
+    SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
-    class Config:
-        """Налаштування Pydantic для завантаження даних з файлу .env."""
-        env_file = ".env"
+    """Налаштування Pydantic для завантаження даних з файлу .env."""
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 # Ініціалізація об'єкта налаштувань для використання в інших модулях
