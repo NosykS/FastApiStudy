@@ -27,10 +27,16 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+
+    DB_USER: str = "postgres"
+    DB_PASSWORD: str
     DB_HOST: str = "localhost"
+    DB_PORT: int = 5432
+    DB_NAME: str = "fastapi_study"
+    DATABASE_URL: str = ""
 
     """Налаштування Pydantic для завантаження даних з файлу .env."""
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 
 # Ініціалізація об'єкта налаштувань для використання в інших модулях

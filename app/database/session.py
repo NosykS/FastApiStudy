@@ -10,9 +10,8 @@ from app.config import settings
 # Збираємо URL динамічно (або беремо готовий, якщо ви додасте його в Settings)
 # Але поки що зробимо так, щоб він використовував DB_HOST з налаштувань
 DATABASE_URL = (
-    f"postgresql+asyncpg://postgres:774456@"
-    f"{settings.DB_HOST if hasattr(settings, 'DB_HOST') else 'localhost'}:"
-    f"5432/fastapi_study"
+    f"postgresql+asyncpg://{settings.DB_USER}:{settings.DB_PASSWORD}@"
+    f"{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}"
 )
 
 # Створення двигуна

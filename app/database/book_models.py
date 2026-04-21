@@ -3,7 +3,8 @@
 Модуль опису SQLAlchemy-моделей для книжкового сховища.
 Визначає структуру таблиць у базі даних PostgreSQL.
 """
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Index, JSON
+from sqlalchemy.dialects.postgresql import JSONB
 from app.database.session import Base
 
 class BookDB(Base):
@@ -22,3 +23,8 @@ class BookDB(Base):
     title = Column(String, nullable=False) # Назва книги, обов'язкове поле
     author = Column(String, nullable=False) # Автор книги, обов'язкове поле
     year = Column(Integer, nullable=False) # Рік видання, обов'язкове поле
+
+    extra_data = Column(JSON().with_variant(JSONB, "postgresql"), nullable=True, server_default='{}')
+    __table_args__ = (
+        Index('ix_books_author_year', 'author', 'year'),
+    )

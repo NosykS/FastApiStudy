@@ -4,7 +4,7 @@
 Визначає структури вхідних та вихідних даних, а також правила їх перевірки.
 """
 from pydantic import BaseModel, Field, ConfigDict
-from typing import Optional
+from typing import Optional, Dict, Any
 from datetime import datetime
 
 # Отримуємо поточний рік для динамічної валідації поля 'year'
@@ -22,6 +22,7 @@ class BookBase(BaseModel):
     title: str = Field(..., min_length=1, max_length=100, examples=["Кобзар"])
     author: str = Field(..., min_length=2, max_length=50, examples=["Тарас Шевченко"])
     year: int = Field(..., ge=0, le=current_year, examples=[1840])
+    extra_data: Optional[Dict[str, Any]] = Field(default={}, examples=[{"genre": "Classic"}])
 
 class BookCreate(BookBase):
     """Схема для створення нової книги. Успадковує всі поля від BookBase."""
@@ -36,7 +37,6 @@ class Book(BookBase):
         from_attributes = True: дозволяє Pydantic працювати з об'єктами SQLAlchemy (ORM).
     """
     id: int
-
     model_config = ConfigDict(from_attributes=True)
 
 class BookUpdate(BaseModel):
@@ -47,6 +47,7 @@ class BookUpdate(BaseModel):
     title: Optional[str] = Field(None, min_length=1, max_length=100)
     author: Optional[str] = Field(None, min_length=2, max_length=50)
     year: Optional[int] = Field(None, ge=0, le=current_year)
+    extra_data: Optional[Dict[str, Any]] = None
 
 class BookNotFoundError(Exception):
     """
