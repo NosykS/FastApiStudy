@@ -5,18 +5,21 @@
 ## 🛠 Технологічний стек
 - **Framework:** [FastAPI](https://fastapi.tiangolo.com/)
 - **Database:** PostgreSQL (Production), SQLite (Testing)
-- **ORM:** SQLAlchemy 2.0 (Async) + Alembic
+- **Migrations** Alembic
+- **ORM:** SQLAlchemy 2.0 (Async) 
 - **Validation:** [Pydantic V2](https://docs.pydantic.dev/) (Settings Management)
 - **Security:** JWT (JSON Web Tokens), OAuth2, Passlib (bcrypt)
 - **Testing:** [Pytest](https://docs.pytest.org/) + `pytest-asyncio` + `httpx`
 - **DevOps:** [Docker](https://www.docker.com/)
 
+
 ## 🌟 Основні можливості
 1. **Authentication System**: Реєстрація та логін з видачею токенів (JWT).
 2. **CRUD Operations**: Повний асинхронний цикл роботи з книгами у БД.
-3. **Smart Testing**: Автоматизовані тести з використанням SQLite `:memory:` для максимальної швидкості.
-4. **Environment Isolation**: Надійна система налаштувань через Pydantic-settings та `.env`.
-5. **Logging**: Система логування подій у файл `api.log`.
+3. **Database Migrations**: Версіонування структури БД за допомогою Alembic.
+4. **Smart Testing**: Автоматизовані тести з використанням SQLite `:memory:` для максимальної швидкості.
+5. **Environment Isolation**: Надійна система налаштувань через Pydantic-settings та `.env`.
+6. **Logging**: Система логування подій у файл `api.log`.
 
 ## ⚙️ Налаштування та запуск
 
@@ -24,22 +27,34 @@
 Створіть файл `.env` у корені проєкту. Це обов'язково, оскільки паролі не зберігаються в коді:
 
 ```env
-SECRET_KEY=ваш_дуже_секретний_ключ
+SECRET_KEY=your_secret_key_here
 ALGORITHM=HS256
-DB_PASSWORD=ваш_пароль_до_postgres
+DB_USER=postgres
+DB_PASSWORD=your_password
 DB_NAME=fastapi_study
+DB_HOST=localhost
+DB_PORT=5432
+
+# URL для асинхронного підключення
+DATABASE_URL=postgresql+asyncpg://postgres:your_password@localhost:5432/fastapi_study
+```
+### 2. Міграції бази даних
+Перед першим запуском необхідно застосувати міграції, щоб створити таблиці в PostgreSQL:
+
+```Bash
+alembic upgrade head
 ```
 
-### 2. Запуск через Docker 🐳 (Рекомендовано)
+### 3. Запуск через Docker 🐳 (Рекомендовано)
 
 ```Bash
 # Збірка та запуск через Docker Desktop
 docker build -t fastapi-study-app .
 docker run -p 8080:8000 --env-file .env fastapi-study-app
-API доступне за адресою: http://localhost:8080/docs
 ```
+API доступне за адресою: http://localhost:8080/docs
 
-### 3. Локальний запуск
+### 4. Локальний запуск
 
 ```Bash
 pip install -r requirements.txt
@@ -58,15 +73,14 @@ pytest --cov=app
 ```
 
 📂 Структура проєкту
-- app/
-  - core/      — налаштування безпеки (JWT, хешування паролів).
-  - database/  — моделі SQLAlchemy та логіка підключення до БД.
-  - routes/    — API ендпоінти (книги, користувачі, події).
-  - schemas/   — Pydantic-моделі для валідації вхідних/вихідних даних.
-  - main.py    — головний файл запуску FastAPI додатка.
-- test/        — папка з тестами.
-  - conftest.py — спільні фікстури (тестова база в пам'яті).
-- .env         — файл зі змінними оточення (паролі, ключі).
-- pytest.ini   — конфігурація для запуску тестів.
+- `app/` — основний код додатка.
+  - `core/`      — налаштування безпеки (JWT, хешування паролів).
+  - `database/`  — моделі SQLAlchemy та логіка підключення до БД.
+  - `routes/`    — API ендпоінти.
+  - `schemas/`   — Pydantic-моделі для валідації.
+- `alembic/`     — папка з історією міграцій.
+- `test/`        — автоматизовані тести.
+- `alembic.ini`  — конфігурація Alembic.
+- `pytest.ini`   — конфігурація для запуску тестів.
 
-Розроблено NosykS (GitHub: NosykS)
+Розроблено [NosykS](https://github.com/NosykS)
