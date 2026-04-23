@@ -1,3 +1,4 @@
+#alembic\env.py
 import asyncio
 from logging.config import fileConfig
 from sqlalchemy import pool
@@ -58,7 +59,17 @@ async def run_migrations_online() -> None:
 if context.is_offline_mode():
     run_migrations_offline()
 else:
+    # Більш безпечний спосіб запуску для асинхронного Alembic
+    import asyncio
+
     try:
-        asyncio.run(run_migrations_online())
-    except (KeyboardInterrupt, SystemExit):
-        pass
+        loop = asyncio.get_event_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+
+    if loop.is_running():
+        # Якщо цикл вже запущено (наприклад, у тестах)
+        asyncio.create_task(run_migrations_online())
+    else:
+        loop.run_until_complete(run_migrations_online())
