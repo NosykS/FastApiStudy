@@ -1,4 +1,4 @@
-#app\core\security.py
+#FastApiStudy\app\core\security.py
 """
 Модуль для забезпечення безпеки: хешування паролів та робота з JWT-токенами.
 """

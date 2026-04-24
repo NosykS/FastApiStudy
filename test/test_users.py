@@ -1,4 +1,4 @@
-#test\test_users.py
+#FastApiStudy\test\test_users.py
 import pytest
 from fastapi.testclient import TestClient
 from jose import jwt

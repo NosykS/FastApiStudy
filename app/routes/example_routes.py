@@ -1,4 +1,4 @@
-#app\routes\example_routes.py
+#FastApiStudy\app\routes\example_routes.py
 """
 Модуль системних прикладів.
 Містить демонстраційні ендпоінти для вивчення базових функцій FastAPI,

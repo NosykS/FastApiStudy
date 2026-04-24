@@ -1,4 +1,4 @@
-#app\routes\product_routes.py
+#FastApiStudy\app\routes\product_routes.py
 """
 Модуль каталогу товарів.
 Демонструє складну валідацію Query-параметрів, використання патернів (Regex),

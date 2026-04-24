@@ -1,4 +1,4 @@
-#app\routes\put_routes.py
+#FastApiStudy\app\routes\put_routes.py
 """
 Модуль для керування даними користувачів.
 Реалізує методи PUT для повного оновлення інформації та DELETE для видалення записів,

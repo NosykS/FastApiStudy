@@ -1,4 +1,4 @@
-#app\schemas\book_schemas.py
+#FastApiStudy\app\schemas\book_schemas.py
 """
 Модуль Pydantic-схем для валідації даних книг.
 Визначає структури вхідних та вихідних даних, а також правила їх перевірки.

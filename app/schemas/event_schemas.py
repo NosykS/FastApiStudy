@@ -1,4 +1,4 @@
-#app\schemas\event_schemas.py
+#FastApiStudy\app\schemas\event_schemas.py
 """
 Модуль Pydantic-схем для управління подіями.
 Визначає структури для подій та їх учасників, підтримує аліаси полів

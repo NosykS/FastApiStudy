@@ -1,4 +1,4 @@
-#app\routes\math_routes.py
+#FastApiStudy\app\routes\math_routes.py
 """
 Модуль математичних операцій.
 Демонструє роботу з параметрами шляху (Path parameters) та автоматичну

@@ -1,4 +1,4 @@
-#app\database\book_models.py
+#FastApiStudy\app\database\book_models.py
 """
 Модуль опису SQLAlchemy-моделей для книжкового сховища.
 Визначає структуру таблиць у базі даних PostgreSQL.

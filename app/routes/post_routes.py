@@ -1,4 +1,4 @@
-#app\routes\post_routes.py
+#FastApiStudy\app\routes\post_routes.py
 """
 Модуль для створення товарів через POST-запити.
 Демонструє використання Pydantic-моделей для валідації тіла запиту (Request Body)

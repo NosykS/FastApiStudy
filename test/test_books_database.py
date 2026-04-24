@@ -1,4 +1,4 @@
-#test\test_books_database.py
+#FastApiStudy\test\test_books_database.py
 import pytest
 from sqlalchemy import select
 from app.database.book_models import BookDB

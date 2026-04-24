@@ -1,4 +1,4 @@
-#test\test_books_api.py
+#FastApiStudy\test\test_books_api.py
 import pytest
 from httpx import AsyncClient, ASGITransport
 from app.main import app

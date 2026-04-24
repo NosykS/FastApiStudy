@@ -1,4 +1,4 @@
-#app\routes\event_routes.py
+#FastApiStudy\app\routes\event_routes.py
 """
 Модуль для керування подіями.
 Використовує імпровізоване сховище в пам'яті (in-memory storage) для демонстрації

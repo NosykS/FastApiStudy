@@ -1,4 +1,4 @@
-#app\routes\async_routes.py
+#FastApiStudy\app\routes\async_routes.py
 """
 Модуль для демонстрації асинхронних можливостей FastAPI.
 Містить приклади неблокуючих операцій, роботу з зовнішніми API та паралельне виконання задач.

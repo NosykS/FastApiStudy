@@ -1,4 +1,4 @@
-#app\routes\book_routes.py
+#FastApiStudy\app\routes\book_routes.py
 """
 Модуль для керування книжковим фондом (CRUD).
 Реалізує асинхронну взаємодію з PostgreSQL для створення, читання, оновлення та видалення книг.

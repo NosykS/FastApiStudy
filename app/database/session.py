@@ -1,4 +1,4 @@
-#app\database\session.py
+#FastApiStudy\app\database\session.py
 """
 Налаштування підключення до PostgreSQL через асинхронний драйвер asyncpg.
 """

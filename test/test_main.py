@@ -1,4 +1,4 @@
-#test\test_main.py
+#FastApiStudy\test\test_main.py
 from fastapi.testclient import TestClient
 from app.main import app
 

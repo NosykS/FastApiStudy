@@ -1,4 +1,4 @@
-#test\conftest.py
+#FastApiStudy\test\conftest.py
 import pytest
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
