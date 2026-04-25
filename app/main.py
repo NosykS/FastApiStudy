@@ -16,6 +16,7 @@ import logging
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from app.routes import auth_routes
+from app.routes.todo_routes import router as todo_router
 
 # 0. Конфігурація системи логування
 # Записує події у файл api.log та виводить їх у термінал
@@ -133,6 +134,7 @@ app.include_router(put_routes.router)
 app.include_router(book_routes.router)
 app.include_router(event_routes.router)
 app.include_router(auth_routes.router)
+app.include_router(todo_router, prefix="/todos", tags=["To-Do MongoDB"])
 
 @app.get("/admin-only", tags=["Системні"], dependencies=[require_role("admin")])
 async def admin_route():
